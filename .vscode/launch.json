@@ -1,0 +1,31 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Docker Raven",
+      "runtimeExecutable": "node",
+      "env": {
+        "APP_PORT": "5000",
+        "ZK_URL": "zk.uw5v6j.private.xyz:2181",
+        "ZK_ROOT": "FE"
+      },
+      "program": "${workspaceFolder}/src/app.ts",
+      "restart": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach by Node",
+      "processId": "${command:PickProcess}",
+      "restart": true
+    }
+  ]
+}
