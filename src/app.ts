@@ -36,10 +36,7 @@ export default class App {
    * @memberof App
    */
   loadHealthCheck() {
-    this.app.use("/pochinki/healthCheck", function(
-      req: Request,
-      res: Response
-    ) {
+    this.app.use("/spock/healthCheck", function(req: Request, res: Response) {
       res.status(200).send({ status: true });
     });
   }

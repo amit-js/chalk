@@ -38,14 +38,14 @@ let serializers = {
 //    - Once in stdout since, info will also recieve it,
 //    - The second time in stderr since we asked for it.
 let infoLogger = bunyan.createLogger({
-  name: "pochinki",
+  name: "spock",
   serializers: serializers,
   stream: process.stdout,
   level: bunyan.INFO
 });
 
 let errorLogger = bunyan.createLogger({
-  name: "pochinki",
+  name: "spock",
   serializers: serializers,
   stream: process.stderr,
   level: bunyan.ERROR
@@ -393,7 +393,7 @@ function errorSerializer(err) {
  * Why this?
  * - By default the error.stack looks like this
  *   "stack": "Error: Something went wrong\n
- *              at Object.<anonymous> (/Users/amit/workspace/code_base/pochinki/core/logger/test/log-test.js:16:11)\n
+ *              at Object.<anonymous> (/Users/amit/workspace/code_base/spock/core/logger/test/log-test.js:16:11)\n
  *              at Module._compile (module.js:653:30)\n
  *              at Object.Module._extensions..js (module.js:664:10)\n
  *              at Module.load (module.js:566:32)\n
@@ -405,7 +405,7 @@ function errorSerializer(err) {
  *
  * - By using stack-trace's parse method we can convert it to a more readable form
  *   "stack":[
- *        {"function":null,"file":"/Users/amit/workspace/code_base/pochinki/core/logger/test/log-test.js","line":16,"column":11},
+ *        {"function":null,"file":"/Users/amit/workspace/code_base/spock/core/logger/test/log-test.js","line":16,"column":11},
  *        {"function":"Module._compile","file":"module.js","line":653,"column":30},
  *        {"function":"Module._extensions..js","file":"module.js","line":664,"column":10},
  *        {"function":"Module.load","file":"module.js","line":566,"column":32},

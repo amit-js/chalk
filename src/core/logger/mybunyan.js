@@ -6,7 +6,7 @@ module.exports = function(name) {
 
   if (myLogger === null) {
     myLogger = bunyan.createLogger({
-      name: "pochinki",
+      name: "spock",
       serializers: bunyan.stdSerializers,
       streams: [
         {
