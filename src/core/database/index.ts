@@ -13,8 +13,21 @@ class SQLHelper {
   }
 
   executeQuery(query, callback) {
-    this.poolConnection.query(query, (err, result, keys) => {
-      callback(err, result);
+    this.poolConnection.getConnection(function(err, connection) {
+      if (err) {
+        connection.release();
+        throw err;
+      }
+      connection.query(query, function(err, rows) {
+        connection.release();
+        if (!err) {
+          callback(null, { rows: rows });
+        }
+      });
+      connection.on("error", function(err) {
+        throw err;
+        return;
+      });
     });
   }
 }

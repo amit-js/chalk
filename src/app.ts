@@ -37,6 +37,11 @@ export default class App {
    */
   loadHealthCheck() {
     this.app.use("/spock/healthCheck", function(req: Request, res: Response) {
+      let cookieOptionsConfig = {
+        maxAge: 3600000,
+        key: "sameSiteNoneSupported",
+        secure: true
+      };
       res.status(200).send({ status: true });
     });
   }

@@ -3,8 +3,8 @@ let { isSameSiteNoneCompatible } = require("should-send-same-site-none");
 
 module.exports = function(req, res, next) {
   requestCookieParser(req);
-  generateSameSiteSettingsCookie(req, res);
-  overrideExpressResponseCookieMethod(req, res);
+  //generateSameSiteSettingsCookie(req, res);
+  //overrideExpressResponseCookieMethod(req, res);
   next();
 };
 

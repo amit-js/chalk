@@ -8,7 +8,7 @@ interface RequestI extends Request {
   message: any;
 }
 const getuser = (req: RequestI, res: Response) => {
-  logger.info(req.session, "getABPath: Request received!");
+  logger.info(req.session, "getUser: Request received!");
   sqlHelper.executeQuery("select * from user", (error, result) => {
     if (error) {
       logger.error({ error }, "getUser: !!! Response Error !!!");

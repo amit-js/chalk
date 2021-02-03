@@ -8,12 +8,35 @@ let responseOverride = require("./responseOverrider");
 let lynx = require("lynx");
 let metrics = new lynx("localhost", 8125);
 
+var session = require("express-session");
+var MySQLStore = require("express-mysql-session")(session);
+var options = {
+  host: "52.66.203.209",
+  user: "trackadmin",
+  password: "T1r@c!k123",
+  database: "track"
+};
+
+var sessionStore = new MySQLStore(options);
+
 /**
  * PS: Here the order in which we add middleware is important.
  * @param expressApp
  */
 module.exports = function(expressApp) {
   expressApp.use(requestStart);
+  expressApp.use(
+    session({
+      key: "ssid",
+      secret: "u-D5qhS(9H:e{TaM",
+      resave: false,
+      saveUninitialized: false,
+      httpOnly: false,
+      cookie: {
+        maxAge: 1000 * 60 * 60 * 48
+      }
+    })
+  );
   expressApp.use(cookieHandler);
   expressApp.use(responseOverride);
 
